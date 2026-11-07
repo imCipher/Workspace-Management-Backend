@@ -1,0 +1,54 @@
+spring.application.name=workspace
+
+# Server configuration
+server.port=${PORT:8080}
+server.servlet.context-path=${SERVER_SERVLET_CONTEXT_PATH:/api}
+
+# Database Connection (PostgreSQL)
+spring.datasource.url=${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/workspace_db}
+spring.datasource.username=${SPRING_DATASOURCE_USERNAME:postgres}
+spring.datasource.password=${SPRING_DATASOURCE_PASSWORD:your_password_here}
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# JPA / Hibernate
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=${SPRING_JPA_HIBERNATE_DDL_AUTO:create}
+spring.jpa.show-sql=${SPRING_JPA_SHOW_SQL:false}
+spring.jpa.properties.hibernate.format_sql=true
+
+# JWT configuration
+jwt.secret=${JWT_SECRET:your_64_character_hex_jwt_secret_here}
+jwt.issuer=${JWT_ISSUER:workspacemanagement}
+# 15 minutes (short-lived access token)
+jwt.access-expiration-ms=${JWT_ACCESS_EXPIRATION_MS:900000}
+# 7 days (long-lived refresh token)
+jwt.refresh-expiration-ms=${JWT_REFRESH_EXPIRATION_MS:604800000}
+
+# Email / Mail configuration
+spring.mail.host=${SPRING_MAIL_HOST:${MAIL_HOST:localhost}}
+spring.mail.port=${SPRING_MAIL_PORT:${MAIL_PORT:587}}
+spring.mail.username=${SPRING_MAIL_USERNAME:${MAIL_USERNAME:}}
+spring.mail.password=${SPRING_MAIL_PASSWORD:${MAIL_PASSWORD:}}
+spring.mail.properties.mail.smtp.auth=false
+spring.mail.properties.mail.smtp.starttls.enable=true
+
+app.mail.from=${APP_MAIL_FROM:noreply@workspace.com}
+app.mail.sender-name=${APP_MAIL_SENDER_NAME:Workspace}
+app.mail.verification-url=${APP_MAIL_VERIFICATION_URL:http://localhost:8080/api/auth/verify-email}
+app.mail.login-url=${APP_MAIL_LOGIN_URL:http://localhost:3000/login}
+app.mail.reset-password-url=${APP_MAIL_RESET_PASSWORD_URL:http://localhost:3000/reset-password}
+app.mail.token-expiration-hours=24
+
+# Default System Administrator Provisioning (seeded on boot if no admin exists)
+app.default-admin.username=${APP_DEFAULT_ADMIN_USERNAME:justme}
+app.default-admin.password=${APP_DEFAULT_ADMIN_PASSWORD:just12345}
+app.default-admin.email=${APP_DEFAULT_ADMIN_EMAIL:admin@workspace.com}
+app.default-admin.fullname=${APP_DEFAULT_ADMIN_FULLNAME:Workspace Administrator}
+
+# SpringDoc OpenAPI / Swagger UI
+springdoc.api-docs.path=${SPRINGDOC_API_DOCS_PATH:/v3/api-docs}
+springdoc.swagger-ui.path=${SPRINGDOC_SWAGGER_UI_PATH:/swagger-ui.html}
+springdoc.swagger-ui.operations-sorter=method
+springdoc.swagger-ui.tags-sorter=alpha
+springdoc.swagger-ui.doc-expansion=none
+springdoc.swagger-ui.display-request-duration=true
