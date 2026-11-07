@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.cipher.workspace.Integration.SwaggerDocumentationIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 49.70 s -- in com.cipher.workspace.Integration.SwaggerDocumentationIntegrationTest
